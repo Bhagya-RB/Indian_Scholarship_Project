@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>eLEARNING - eLearning HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'main/img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'main/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'main/css/style.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+           
+            <i class="fa fa-3x fa-graduation-cap text-primary mb-4" style="margin-top:17px"></i>
+            <h2 class="m-0 text-primary">Scholarship</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{% url 'home' %}" class="nav-item nav-link ">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link active">About</a>
+                <!-- <a href="courses.html" class="nav-item nav-link">Courses</a> -->
+                <!-- <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    </div>
+                </div> -->
+                <a href="{% url 'scholarships' %}" class="nav-item nav-link">Scholarships</a>
+                <a href="{% url 'admin-login' %}" class="nav-item nav-link ">Admin</a>
+                <a href="{% url 'scholarship-provider-login' %}" class="nav-item nav-link">Scholarship Provider</a>
+                <a href="{% url 'contact'%}" class="nav-item nav-link">Contact</a>
+
+            </div>
+            <a href="{% url 'student-login' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Student<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">About Us</h1>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Service Start -->
+    
+    <!-- Service End -->
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'main/img/about.jpg' %}" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+                    
+                    <h1 class="mb-4"></h1>
+                    
+                    <p class="mb-4">Founded in 1998, Scholarships.com has helped students find money for college and learn about the entire financial aid process. We are among the most widely-used and trusted free college scholarship search and financial aid information resources on the Internet and have been recognized by high schools, colleges and universities nationwide, among others. We’ve built solid relationships with colleges and universities across the country and want to provide students with the opportunity to not only find free money for college and interact with prospective colleges but to be recruited as well.</p>
+                    
+                    
+                
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Scholarships for college students? Absolutely.</h6>
+                    
+                    
+                    
+                    <p class="mb-4">College scholarships aren't just for high school seniors. Many of our users are already enrolled in college and are looking for money for the next semester or academic year. Whether you are in high school, college or grad school and regardless of your age, there are scholarships in our database for you.</p>
+                    
+                    
+                
+                </div>
+
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">We update our scholarship data daily.</h6>
+                    
+                    <h1 class="mb-4"></h1>
+                    
+                    <p class="mb-4">Our hard-working, dedicated staff is adding and updating scholarships in our database daily. We respond to feedback quickly and are constantly morphing into the next, better iteration of ourselves. We keep viable scholarships updated and discard any that appear to be inactive. We understand the scholarship cycle. Most are annual and not all are on the same schedule. We adapt and adjust so you won’t have to.</p>
+                    
+                    
+                
+                   
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Reach</h6>
+                    
+                    <h1 class="mb-4"></h1>
+                    
+                    <p class="mb-4">Scholarships.com has more than 16 million registered users and averages approximately one million visitors per month and several million page views over the same period. Since 1998, Scholarships.com has helped millions of students, parents and educators not only find free money for college but also provided direction for those unfamiliar with the entire application process, both for colleges and scholarships.</p>
+                    
+                    
+                
+                   
+                </div>
+                
+            
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Team Start -->
+    
+    <!-- Team End -->
+        
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Quick Link</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Privacy Policy</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">FAQs & Help</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="{% static 'main/img/course-1.jpg' %}" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="{% static 'main/img/course-2.jpg' %}" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="{% static 'main/img/course-3.jpg' %}" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="{% static 'main/img/course-2.jpg' %}" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="{% static 'main/img/course-3.jpg' %}" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="{% static 'main/img/course-1.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Popular Scholarships</h4>
+                    <a class="btn btn-link" href="">Easy Scholarships</a>
+                    <a class="btn btn-link" href="">No Essay Scholarships</a>
+                    <a class="btn btn-link" href="">Scholarship for college student</a>
+                    <a class="btn btn-link" href="">Scholarship for Women</a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    
+                    <div class="col-12 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="">Home</a>
+                            <a href="">Cookies</a>
+                            <a href="">Help</a>
+                            <a href="">FQAs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'main/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'main/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'main/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'main/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'main/js/main.js' %}"></script>
+</body>
+
+</html>
