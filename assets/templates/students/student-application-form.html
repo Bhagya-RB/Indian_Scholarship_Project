@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eLEARNING - eLearning HTML Template</title>
+    <title>-Indian Scholarship Project-</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -26,10 +26,10 @@
     <link href="{% static 'students/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'studnets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'students/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{% static 'studnets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'students/css/style.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -65,8 +65,7 @@
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div> -->
-                <a href="{% url 'student-applied-scholarships' %}" class="nav-item nav-link">Applied</a>
-                 
+                {% comment %} <a href="{% url 'student-applied-scholarships' %}" class="nav-item nav-link">Applied</a> {% endcomment %}
                 <a href="{% url 'student-feedback' %}" class="nav-item nav-link">Feedback</a>
                 <a href="{% url 'student-profile' %}" class="nav-item nav-link ">My Profile</a>
                 <a href="{% url 'student-login' %}" class="nav-item nav-link active">Logout</a>
@@ -103,25 +102,27 @@
                         <div class="card-body">
                             <h4 class="card-title" style="text-align:center;margin:12px;margin-bottom:50px;color:blueviolet;font-family:roboto;">Application Form</h4>
                             <div class="basic-form">
-                                <form>
+                                <form method="post">
+                                    {% csrf_token %}
                                     <div class="form-row">
                                         <div style="display:flex;margin-bottom:15px;"> 
                                             <div class="form-group col-md-4" >
-                                                <label for="a" class="ml-1" style="margin-left:1px">Student ID</label>
-                                                <input type="email" class="form-control" style="border-radius:10px;" id="a" placeholder="Student ID">
+                                                <label for="a" class="ml-1" style="margin-left:1px">Type of Scholarship</label>
+                                                <input type="text" class="form-control" style="border-radius:10px;" id="a" name="type_of_scholarship" value="{{ data.type_of_scholarship }}"  placeholder="Type of Scholarship">
                                             </div>
                                             <div class="form-group col-md-4" style="margin-left:6px;">
-                                                <label for="a" class="ml-1" style="margin-left:8px">Name</label>
-                                                <input type="email" class="form-control" style="border-radius:10px;" id="a" placeholder="Name of the Applicant">
+                                                <label for="a" class="ml-1" style="margin-left:8px">Name of scholarship</label>
+                                                <input type="text" class="form-control" style="border-radius:10px;" id="a" name="name_of_scholarship" value="{{ data.name_of_scholarship }}" placeholder="Name of Scholarship">
                                             </div>
                                             <div class="form-group col-md-4" style="margin-left:3px">
-                                                <label for="a" class="ml-1" style="margin-left:8px">Nationality</label>
-                                                <input type="email" class="form-control" style="border-radius:10px;" id="a" placeholder="Nationality">
+                                                <label for="a" class="ml-1" style="margin-left:8px">Type of Scheme</label>
+                                                <input type="text" class="form-control" style="border-radius:10px;" id="a"  name="type_of_scheme" value="{{ data.type_of_scheme }}" placeholder="Type of Scheme">
                                             </div>
 
                                             
                                             
                                         </div>
+                                        
 
                                         
                                         
@@ -130,126 +131,28 @@
 
 
                                     <div style="display:flex;margin-bottom:15px;"> 
-                                        <div class="form-group col-md-4" style="margin-left:1px">
-
-                                            <label class="ml-1" style="margin-left:7px">Gender</label>
-                                            <select id="inputState" class="form-control" style="border-radius:10px;background-color:white;">
-                                                <option selected="selected">Choose...</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                                
-                                            </select>
+                                        <div class="form-group col-md-4" style="margin-left:6px">
+                                            <label class="ml-1" style="margin-left:7px">Amount</label>
+                                            <input type="text" class="form-control" placeholder="amount" name="amount" value="{{ data.amount }}" style="border-radius:10px">
                                         </div>
                                         
                                         <div class="form-group col-md-4" style="margin-left:6px">
-                                            <label class="ml-1" style="margin-left:7px">Date of Birth</label>
-                                            <input type="date" class="form-control" placeholder="Date of Birth" style="border-radius:10px">
+                                            <label class="ml-1" style="margin-left:7px">last Date</label>
+                                            <input type="date" class="form-control" placeholder="Post Date" name="last_date" style="border-radius:10px" value="{{ data.last_date |date:'Y-m-d' }}">
                                         </div>
                                     
                                         <div class="form-group col-md-4" >
 
-                                            <label class="ml-1" style="margin-left:7px">State</label>
-                                            <select id="inputState" class="form-control" style="border-radius:10px;background-color:white;margin-left:6px">
-                                                <option selected="selected">Choose...</option>
-                                                <option>Andhra Pradesh</option>
-                                                <option>Arunachal Pradesh</option>
-                                                <option>Assam</option>
-                                                <option>Bihar</option>
-                                                <option>Chattisgarh</option>
-                                                <option>Goa</option>
-                                                <option>Gujarat</option>
-                                                <option>Haryana</option>
-                                                <option>Himachal Pradesh</option>
-                                                <option>Jammu Kashmir</option>
-                                                <option>Jharkhand</option>
-                                                <option>Kerala</option>
-                                                <option>Madhya Pradesh</option>
-                                                <option>Maharastra</option>
-                                                <option>Manipur</option>
-                                                <option>Meghalaya</option>
-                                                <option>Mizoram</option>
-                                                <option>Nagaland</option>
-                                                <option>Odisha</option>
-                                                <option>Punjab</option>
-                                                <option>Rajasthan</option>
-                                                <option>Sikkim</option>
-                                                <option>Tamil Nadu</option>
-                                                <option>Telangana</option>
-                                                <option>Tripura</option>
-                                                <option>Uttar Pradesh</option>
-                    
-                                                <option>Uttarakhand</option>
-                                                <option>West Bengal</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <div style="display:flex;margin-bottom:15px;"> 
-                                        <div class="form-group col-md-4" >
-                                            <label for="a" class="ml-1" style="margin-left:7px">House No</label>
-                                            <input type="text" class="form-control" style="border-radius:10px;" id="a" placeholder="House No">
-                                        </div>
-                                        
-                                        <div class="form-group col-md-4" >
-                                            <label for="a" class="ml-1" style="margin-left:10px">Street/Locality</label>
-                                            <input type="text" class="form-control" style="border-radius:10px;margin-left:6px;" id="a" placeholder="Locality">
-                                        </div>
-
-                                        <div class="form-group col-md-4" >
-                                            <label for="a" class="ml-1" style="margin-left:18px">City</label>
-                                            <input type="text" class="form-control" style="border-radius:10px;margin-left:10px;" id="a" placeholder="City">
-                                        </div>
-                                        
-                                        
-                                    </div>
-
-
-
-                                    <div style="display:flex;margin-bottom:15px;"> 
-                                        <div class="form-group col-md-6" >
-                                            <label for="a" class="ml-1" style="margin-left:7px">District</label>
-                                            <input type="text" class="form-control" style="border-radius:10px;" id="a" placeholder="District">
-                                        </div>
-                                        
-                                        <div class="form-group col-md-6" >
-                                            <label for="a" class="ml-1" style="margin-left:12px">Pincode</label>
-                                            <input type="text" class="form-control" style="border-radius:10px;margin-left:6px;" id="a" placeholder="Pincode">
-                                        </div>
-
-                                        
-                                        
-                                        
-                                    </div>
-
-                                       
-                                        
-                                       
-
-
-                                        <div style="display:flex;margin-bottom:15px;"> 
-                                            <div class="form-group col-md-4" >
-                                                <label for="a" class="ml-1" style="margin-left:7px">Aadhar Number</label>
-                                                <input type="text" class="form-control" style="border-radius:10px;" id="a" placeholder="Aadhar No">
-                                            </div>
+                                            <label class="ml-1" style="margin-left:7px">Eligibility</label>
+                                            <input type="text" class="form-control" placeholder="Eligibility" name="eligibility" style="border-radius:10px" value="{{ data.eligibility }}">
                                             
-                                            <div class="form-group col-md-4" >
-                                                <label for="a" class="ml-1" style="margin-left:12px">Email Id</label>
-                                                <input type="text" class="form-control" style="border-radius:10px;margin-left:6px;" id="a" placeholder="Email Id">
-                                            </div>
-    
-                                            <div class="form-group col-md-4" >
-                                                <label for="a" class="ml-1" style="margin-left:18px">Mobile Number</label>
-                                                <input type="text" class="form-control" style="border-radius:10px;margin-left:10px;" id="a" placeholder="Mobile No">
-                                            </div>
-                                            
-                                            
-                                        </div>
+                                        </div> 
                                     </div>
-                                    
-                                    <button type="submit" class="btn btn-dark">Apply</button>
+
+                                    </div>
+                                    <a href="/student-applied-scholarships/{{data.post_id}}" type="submit" class="btn btn-primary m-3">Apply</a>
+
+                                    {% comment %} <button type="submit" class="btn btn-dark">Apply</button> {% endcomment %}
                                 </form>
                             </div>
                         </div>
@@ -268,17 +171,16 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+                    <a class="btn btn-link" href="{% url 'home' %}">Home</a>
+                    <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                    <a class="btn btn-link" href="{% url 'scholarships' %}">Scholarship</a>
+                    <a class="btn btn-link" href="{% url 'contact' %}">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Hyderabad, Telangana 500074</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9874561230</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@codebook.in</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -305,7 +207,7 @@
                             <img class="img-fluid bg-light p-1" src="{% static 'students/img/course-3.jpg' %}" alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="{% static 'students/img/course-1.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="{% static 'students/img/course-1.jpg'%}" alt="">
                         </div>
                     </div>
                 </div>

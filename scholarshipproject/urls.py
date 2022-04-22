@@ -43,16 +43,23 @@ urlpatterns = [
 
 
     path('admin-view-scholarship',admin_views.admin_view_scholarships, name='admin-view-scholarship'),
+
+
+    path('accepts_scholarship/<int:id>/',admin_views.accepts_scholarship, name='accepts_scholarship'),
+    path('reject_scholarship/<int:id>/',admin_views.reject_scholarship, name='reject_scholarship'),
+
+
     path('admin-view-applied-candidates',admin_views.admin_view_applied_candidates, name='admin-view-applied-candidates'),
-
-
-    #accept reject students urls
-    path('accepts_student/<int:id>/',admin_views.accepts_student, name='accepts_student'),
-    path('reject_student/<int:id>/',admin_views.reject_student, name='reject_student'),
 
 
 
     path('admin-view-all-candidates',admin_views.admin_view_all_candidates, name='admin-view-all-candidates'),
+
+    #accept reject students urls
+    path('accepts_students/<int:id>/',admin_views.accepts_students, name='accepts_students'),
+    path('reject_students/<int:id>/',admin_views.reject_students, name='reject_students'),
+
+
     path('admin-view-feedback',admin_views.admin_view_feedback, name='admin-view-feedback'),
 
 
@@ -82,9 +89,22 @@ urlpatterns = [
     path('student-login',students_views.student_login, name='student-login'),
     path('student-profile',students_views.student_profile, name='student-profile'),
     path('student-courses',students_views.student_courses, name='student-courses'),
+
     path('student-applied-scholarships',students_views.student_applied_scholarships, name='student-applied-scholarships'),
+
+
+    path('student-applied-scholarships/<int:id>/',students_views.student_applied_scholarships, name='student-applied-scholarships'),
     path('student-view-scholarship',students_views.student_view_scholarship, name='student-view-scholarship'),
     path('student-scholarship-details',students_views.student_scholarship_details, name='student-scholarship-details'),
+
+    path('student-scholarship-details/<int:id>/',students_views.student_scholarship_details, name='student-scholarship-details'),
+
+    # path('apply-now/<int:id>/',students_views.apply_now, name='apply-now'),
+
+
+    path('student-application-form/<int:id>/',students_views.student_application_form, name='student-application-form'),
+
+
     path('student-feedback',students_views.student_feedback, name='student-feedback'),
 
 

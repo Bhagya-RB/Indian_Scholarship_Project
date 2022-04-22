@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eLEARNING - eLearning HTML Template</title>
+    <title>-Indian Scholarship Project-</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -30,6 +30,100 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'students/css/style.css' %}" rel="stylesheet">
+
+    <script type="text/javascript">
+        function validate() {
+          let name = document.myform.name;
+          let email = document.myform.email;
+          let phone = document.myform.phone;
+          let password = document.myform.password;
+          let confirmpassword = document.myform.confirm_password; 
+          let photo = document.myform.photo;
+          let letters = /^[A-Za-z  ]+$/;
+          let mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+    
+    
+    
+    
+          if (name.value <= 0) {
+            alert("Enter the name")
+            name.focus()
+            return false
+          }
+          if (!name.value.match(letters)) {
+            alert("Enter characters only at name");
+            nameEL.focus();
+            return false;
+          }
+          if (!isNaN(name)) {
+            alert("Only characters are allowed");
+            name.focus();
+            return false;
+          }
+    
+    
+          if (email.value <= 0) {
+            alert("Enter the Email Id ")
+            emailid.focus()
+            return false
+          }
+          if (!email.value.match(mailformat)) {
+            alert("invalid gmail");
+            emailid.focus();
+            return false;
+          }
+    
+    
+          if (phone.value <= 0){
+            alert("Enter the Phone number ")
+            phone.focus()
+            return false
+          }
+          if (!isNaN(phone)){
+            alert("Phone field Enter only number")
+            phone.focus()
+            return false
+          }
+          if(phone.value.length!= 10) {
+            alert("Enter 10 digits for phone number")
+            phone.focus()
+            return false
+          }
+    
+    
+          if (password.value.length <= 0){
+            alert("Enter the Password ")
+            password.focus()
+            return false
+          }
+    
+          if (confirmpassword.value.length <= 0){
+            alert("Enter Confirm Password ")
+            confirmpassword.focus()
+            return false
+          }
+          if (confirmpassword.value != password.value ){
+            alert("Password & Confirm Password Should be same ")
+            confirmpassword.focus()
+            return false
+          }
+    
+          
+         
+    
+          if (photo.value ==''){
+            alert("Please upload the photo")
+            profile.focus()
+            return false
+          }
+        else{
+          return true
+        }
+    
+        }
+    
+    
+      </script>
 </head>
 
 <body>
@@ -83,7 +177,7 @@
             <center>
             <div class="col-lg-7 col-md-8 col-8 wow fadeInUp"  data-wow-delay="0.5s">
                 <h6 class="section-title bg-white text-center text-primary px-3 m-4">Student Registration</h6>
-                <form method="post" enctype="multipart/form-data" >             
+                <form method="post" enctype="multipart/form-data" name="myform" onsubmit="return validate()" >             
                   {% csrf_token %}
                     <div class="row g-3 justify-content-center">
                         <div class="col-md-7">
@@ -97,7 +191,7 @@
                         <div class="col-md-7">
                             <div class="form-floating">
                                 <input type="tel" class="form-control" id="text" name="phone" placeholder="Phone Number">
-                                <label for="text">Email</label>
+                                <label for="text">Phone</label>
                             </div>
                         </div>
                         <div class="col-md-7">
@@ -116,13 +210,13 @@
 
                         <div class="col-md-7">
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="text" name="confirmpwd"   placeholder="Password">
+                                <input type="password" class="form-control" id="text" name="confirmpassword"   placeholder="Password">
                                 <label for="text">Confirm Password</label>
                             </div>
                         </div>
                         <div class="col-md-7">
                             <div class="form-floating">
-                                <input class="form-control" type="file" id="formFile" name="photo" style="background-color:white;" >
+                                <input class="form-control" type="file" id="formFile" name="photo" style="background-color:white;" required >
                                 <label for="text">Photo</label>
                             </div>
                         </div>
@@ -149,17 +243,16 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+                    <a class="btn btn-link" href="{% url 'home' %}">Home</a>
+                    <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                    <a class="btn btn-link" href="{% url 'scholarships' %}">Scholarship</a>
+                    <a class="btn btn-link" href="{% url 'contact' %}">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Hyderabad, Telangana 500074</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9874561230</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@codebook.in</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>

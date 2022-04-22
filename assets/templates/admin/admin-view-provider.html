@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>-Indian Scholarship Project-</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin/images/favicon.png' %}">
     <!-- Custom Stylesheet -->
@@ -211,7 +211,7 @@
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li>
+                                        {% comment %} <li>
                                             <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <li>
@@ -221,8 +221,8 @@
                                         <hr class="my-2">
                                         <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        </li> {% endcomment %}
+                                        <li><a href="{% url 'admin-login' %}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -322,7 +322,7 @@
                                                     <th>Photo</th>
                                                     <th>Provider Name</th>
                                                     <th>Email Id</th>
-                                                   
+                                                    <th>Firm registration</th>
                                                     <th>Contact Number</th>
                                                     <th>Status</th>
                                                     <th>Decision</th>
@@ -341,6 +341,11 @@
 
                                                         </span>
                                                     </td>
+                                                    <td>
+                                                          
+                                     <a class="text-primary" href="/media/{{ s.firm_registration}}" type="button"> <i class="fa fas fa-download"></i></a>
+                                                              {% comment %} <button class="btn"><i class="fa fa-download"></i> <a href="/media/{{ s.firm_registration }}" download></a>Download</button>                                                     {% endcomment %}
+                                                    </td> 
                                                     
                                                     <td><span>{{ s.phone_number }}</span></td>
                                                     {% comment %} <td>
@@ -371,7 +376,8 @@
                                                      {% endif %}
                                                      <td>
                                                          <a href="accepts_provider/{{s.provider_id}}" type="submit" class="btn btn-success">Accept </a>
-                                                         <a href="reject_provider/{{s.provider_id}}" type="submit" class="btn btn-danger">Reject</a>                                                </tr>
+                                                         <a href="reject_provider/{{s.provider_id}}" type="submit" class="btn btn-danger">Reject</a>                                               
+                                                     </tr>
 
                                                 
                                                

@@ -24,3 +24,20 @@ class FeedbackModel(models.Model):
 
     class Meta:
        db_table = 'Students_Feedback_Details'
+
+
+# Create student application form model
+class ApplicationModel(models.Model):
+    application_id = models.AutoField(primary_key=True)
+
+    type_of_scholarship = models.CharField(max_length=155)
+    type_of_scheme = models.CharField(max_length=100, null=True)
+    name_of_scholarship = models.CharField(max_length=111)
+    amount = models.IntegerField(null=True)
+    last_date = models.DateField(auto_now_add=True, null=True)
+    eligibility = models.CharField(max_length=111)
+
+    application_date = models.DateField(auto_now_add=True, null=True)
+
+    class Meta:
+        db_table = 'Application_Details'

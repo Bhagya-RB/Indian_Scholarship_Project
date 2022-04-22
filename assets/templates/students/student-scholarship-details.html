@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eLEARNING - eLearning HTML Template</title>
+    <title>-Indian Scholarship Project-</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -65,7 +65,7 @@
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div> -->
-                <a href="{% url 'student-applied-scholarships' %}"  class="nav-item nav-link">Applied</a>
+                {% comment %} <a href="{% url 'student-applied-scholarships' %}"  class="nav-item nav-link">Applied</a> {% endcomment %}
                  
                 <a href="{% url 'student-feedback' %}" class="nav-item nav-link">Feedback</a>
                 <a href="{% url 'student-profile' %}" class="nav-item nav-link">My Profile</a>
@@ -84,7 +84,7 @@
 
                 <!-- Hero Area Start-->
                 <div class="slider-area ">
-                <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg' %}">
+                <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-12">
@@ -114,7 +114,7 @@
                                         <div class="small-section-tittle">
                                             <h4> Description</h4>
                                         </div>
-                                        <p>What are the key eligibility conditions applicable to each Telangana scholarship? Which category of students are covered under these scholarships? The answers to these questions are mentioned in the table below. The key eligibility condition that applies to each scholarship is that the students must be a domicile of Telangana state only. The students residing outside the state are not eligible to apply for any of these scholarships. Besides this, the other eligibility conditions that students must fulfil for these scholarships are given in the table below.</p>
+                                        <p>{{ data.description }}</p>
                                     </div>
                                     <div class="post-details2  mb-50">
                                          <!-- Small Section Tittle -->
@@ -122,11 +122,8 @@
                                             <h4>Required Documents</h4>
                                         </div>
                                        <ul>
-                                           <li>Aadhar</li>
-                                           <li>SSC Memo</li>
-                                           <li>Pancard</li>
-                                           <li>Income Certificate</li>
-                                           <li>Caste Certificate</li>
+                                           <li>{{ data.documents_required }}</li>
+                                           
                                        </ul>
                                     </div>
                                     <div class="post-details2  mb-50">
@@ -135,12 +132,12 @@
                                             <h4>Eligibility</h4>
                                         </div>
                                        <ul>
-                                           <li>Class 11</li>
-                                           <li>Class 12</li>
+                                           <li>{{ data.eligibility }}</li>
+                                           {% comment %} <li>Class 12</li>
                                            <li>Post Graduation</li>
                                            <li>Phd</li>
                                            <li>Diploma</li>
-                                           <li>Vocational Course</li>
+                                           <li>Vocational Course</li> {% endcomment %}
                                        </ul>
                                     </div>
                                 </div>
@@ -154,15 +151,16 @@
                                        <h4>Scholarship</h4>
                                    </div>
                                   <ul>
-                                      <li>Type of Scholarship :  <span>Talent-Based</span></li>
-                                      <li>Name of Scholarship :  <span>Ambedkar Overseas Vidya Nidhi <span></li>
-                                      <li>Amount : <span>7500</span></li>
-                                      <li>Posted Date : <span>12 Feb 2022</span></li>
+                                      <li>Type of Scholarship :  <span>{{ data.type_of_scholarship }}</span></li>
+                                      <li>Name of Scholarship :  <span>{{ data.name_of_scholarship }} <span></li>
+                                      <li>Type of scheme :  <span>{{ data.type_of_scheme }} <span></li>
+                                      <li>Amount : <span>{{ data.amount }}</span></li>
+                                      <li>Posted Date : <span>{{ data.post_date }}</span></li>
                                       
-                                      <li>Last Date : <span>25 March 2022</span></li>
+                                      <li>Last Date : <span>{{ data.last_date }}</span></li>
                                   </ul>
                                  <div class="apply-btn2">
-                                    <a href="student-application-form.html" class="btn btn-dark">Apply Now</a>
+                                    <a href="/student-application-form/{{data.post_id}}" type="submit" class="btn btn-primary m-3">Apply Now</a>
                                  </div>
                                </div>
                                 
@@ -184,17 +182,16 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+                    <a class="btn btn-link" href="{% url 'home' %}">Home</a>
+                    <a class="btn btn-link" href="{% url 'about' %}">About Us</a>
+                    <a class="btn btn-link" href="{% url 'scholarships' %}">Scholarship</a>
+                    <a class="btn btn-link" href="{% url 'contact' %}">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Hyderabad, Telangana 500074</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9874561230</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@codebook.in</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>

@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect ,get_object_or_404
 from django.contrib import messages
-from studentsapp.models import StudentsRegistrationModel
+from studentsapp.models import StudentsRegistrationModel, ApplicationModel, FeedbackModel
+from scholarshipprovidersapp.models import PostScholarshipModel
 
 # Create your views here.
 def student_index(request):
@@ -39,20 +40,73 @@ def student_login(request):
     return render(request, "students/student-login.html")
 
 def student_profile(request):
-    
-    return render(request,"students/student-profile.html")
+    student_id =request.session["student_id"]
+    profile = StudentsRegistrationModel.objects.get(student_id=student_id) 
+    obj=get_object_or_404(StudentsRegistrationModel,student_id=student_id)
+    if request.method == 'POST':
+        name= request.POST.get('name')
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        phone_number = request.POST.get('phonenumber')
+        if len(request.FILES) != 0:
+            photo = request.FILES['photo']
+            obj.name = name
+            obj.email=email
+            obj.password=password
+            obj.phone_number = phone_number
+            obj.photo = photo
+            obj.save(update_fields=['name','photo','email','phonenumber','password'])
+        else:
+            obj.name = name
+            obj.email=email
+            obj.password=password
+            obj.phone_number=phone_number
+            obj.save(update_fields=['name','email','phone_number','password'])
+    return render(request,"students/student-profile.html",{"profile":profile})
 
 def student_courses(request):
     return render(request,"students/courses.html")
 
-def student_applied_scholarships(request):
-    return render(request,"students/student-applied-scholarships.html")
+def student_applied_scholarships(request,id):
+    obj = get_object_or_404(PostScholarshipModel,post_id=id)
+    return render(request,"students/student-applied-scholarships.html",{"data":obj})
 
 def student_view_scholarship(request):
-    return render(request,"students/student-view-scholarships.html")
+    data =  PostScholarshipModel.objects.all()
+    return render(request,"students/student-view-scholarships.html",{"data":data})
 
-def student_scholarship_details(request):
-    return render(request,"students/student-scholarship-details.html")
+def student_scholarship_details(request,id):
+    # data = PostScholarshipModel.objects.filter(post_id=id)
+    obj = get_object_or_404(PostScholarshipModel,post_id=id)
+    return render(request,"students/student-scholarship-details.html",{"data":obj})
+
+# def apply_now(request,id):
+#     return render(request,"students/student-application-form.html")
+
+def student_application_form(request,id):
+    # student_id= request.session["student_id"]
+    # scholarship_details = PostScholarshipModel.objects.get(post_id=id)
+    # student_details = StudentsRegistrationModel.objects.all(student_id = student_id)
+    obj = get_object_or_404(PostScholarshipModel,post_id=id)
+    # objj = get_object_or_404(StudentsRegistrationModel,student_id=id)
+    
+    if request.method == "POST":
+        type_of_scholarship = request.POST['type_of_scholarship']
+        name_of_scholarship = request.POST['name_of_scholarship']
+        type_of_scheme = request.POST['type_of_scheme']
+        amount = request.POST['amount']
+        last_date = request.POST['last_date']
+        eligibility = request.POST['eligibility']
+        # name = request.POST['name']
+        # email = request.POST['email']
+        # mobile = request.POST['mobile']
+        ApplicationModel.objects.create(type_of_scholarship=type_of_scholarship, eligibility=eligibility,name_of_scholarship=name_of_scholarship, type_of_scheme=type_of_scheme, amount=amount, last_date=last_date,)
+    return render(request,"students/student-application-form.html",{"data":obj,})
 
 def student_feedback(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('feedback')
+        FeedbackModel.objects.create(name=name, email=email, message=message)
     return render(request,"students/student-feedback.html")

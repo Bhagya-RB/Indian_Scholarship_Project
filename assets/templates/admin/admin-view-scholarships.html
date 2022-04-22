@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>-Indian Scholarship Project-</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'admin/images/favicon.png' %}">
     <!-- Custom Stylesheet -->
@@ -211,7 +211,7 @@
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li>
+                                        {% comment %} <li>
                                             <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <li>
@@ -221,8 +221,8 @@
                                         <hr class="my-2">
                                         <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        </li> {% endcomment %}
+                                        <li><a href="{% url 'admin-login' %}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -324,7 +324,7 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                <th>post_id</th>
                                                 <th>Scholarship Type</th>
                                                 <th>Type of Scheme</th>
                                                 <th>Name of Scholarship</th>
@@ -335,31 +335,43 @@
                                                 
                                             </tr>
                                         </thead>
+                                        {% for s in PostScholarshipModel %}
+
                                         <tbody>
                                             <tr>
 
-                                                <td>1</td>
-                                                <td>Merit-Based</td>
-                                                <td>State Scheme</td>
-                                                <td>Do-Over Scholarship</td>
-                                                <td><span>5000</span>
-                                                <td>12/02/22</td>
-                                                </td>
+                                                <td>{{ s.post_id}}</td>
+                                                <td>{{ s.type_of_scholarship }}</td>
+                                                <td>{{ s.type_of_scheme }}</td>
+                                                <td>{{ s.name_of_scholarship }}</td>
+                                                <td><span>{{ s.amount }}</span>
+                                                <td>{{ s.post_date}}</td>
+                                           
+
+                                                {% if s.status == "Accepted" %}
                                                 <td>
-                                                    <div>
-                                                        <div class="progress" style="height:11px">
-                                                            <div class="progress-bar bg-success" style="width:100%;padding:2px"><span style="font-weight:bold;font-size:10px;">Success</span></div>
-                                                        </div>
-                                                    </div>
+                                                   <span class="btn btn-success">{{s.status}}</span>
                                                 </td>
+                                                {% elif s.status == "Rejected" %}
                                                 <td>
-                                                    <button class="btn btn-success ml-3">Accept</button>
-                                                    <button class="btn btn-danger ml-2"> Reject</button>
+                                                   <span class="btn btn-danger">{{s.status}}</span>
                                                 </td>
+                                                {% else %}
+                                                <td>
+                                                   <span class="btn btn-info">{{s.status}}</span>
+                                                </td>
+                                                {% endif %}
+                                                <td style="display:flex">
+                                                    <a href="accepts_scholarship/{{s.post_id}}" type="submit" class="btn btn-success">Accept </a>
+                                                    <a href="reject_scholarship/{{s.post_id}}" type="submit" class="btn btn-danger">Reject</a>   
+                                                </td>
+
+                                           
                                             </tr>
+                                            
 
 
-                                            <tr>
+                                            {% comment %} <tr>
 
                                                 <td>2</td>
                                                 <td>Merit-Based</td>
@@ -379,11 +391,11 @@
                                                     <button class="btn btn-success ml-3">Accept</button>
                                                     <button class="btn btn-danger ml-2"> Reject</button>
                                                 </td>
-                                            </tr>
+                                            </tr> {% endcomment %}
 
 
 
-                                            <tr>
+                                            {% comment %} <tr>
 
                                                 <td>3</td>
                                                 <td>Merit-Based</td>
@@ -403,11 +415,12 @@
                                                     <button class="btn btn-success ml-3">Accept</button>
                                                     <button class="btn btn-danger ml-2"> Reject</button>
                                                 </td>
-                                            </tr>
+                                            </tr> {% endcomment %}
 
                                             
                                            
                                         </tbody>
+                                        {% endfor %}
                                     </table>
                                 </div>
                             </div>

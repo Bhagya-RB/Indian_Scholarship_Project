@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>-Indian Scholarship Project-</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'scholarshipproviders/images/favicon.png' %}">
     <!-- Custom Stylesheet -->
@@ -344,17 +344,19 @@
                                                 
                                             </tr>
                                         </thead>
-                                        {% for f in FeedbackModel %}
+                                        {% for f in data %}
+
                                         <tbody>
                                             <tr>
-                                                <th>{{ f.feedback_id}}</th>
+                                                <th>{{ f.feedback_id }}</th>
                                                 <td>{{ f.name }}</td>
                                                 <td>{{ f.email }}</td>
                                                 <td>{{ f.message }}</td>
                                                 <td>{{ f.feedback_date }}</td>
-                                            </tr>   
+                                            </tr> 
                                         </tbody>
-                                        {% endfor %}
+                                        {% endfor %}  
+
                                     </table>
                                 </div>
                             </div>
@@ -380,7 +382,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+                <p>Copyright &copy; Designed & Developed by <a href="https://codebook.in/">Codebook</a> 2018</p>
             </div>
         </div>
         <!--**********************************

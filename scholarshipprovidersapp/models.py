@@ -29,6 +29,7 @@ class PostScholarshipModel(models.Model):
     description = models.TextField(max_length=155)
     documents_required = models.CharField(max_length=100, null=True)
     last_date = models.DateField(null=True)
+    status = models.CharField(default='pending',max_length=100, null=True)
     post_date = models.DateField(auto_now_add=True, null=True)
 
     class Meta:

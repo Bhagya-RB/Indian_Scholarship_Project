@@ -6,13 +6,15 @@ from django.shortcuts import render,redirect, get_object_or_404
 from scholarshipprovidersapp.models import ProviderRegistrationModel ,PostScholarshipModel
 from django.contrib import messages
 
-from studentsapp.models import FeedbackModel
+from studentsapp.models import FeedbackModel, StudentsRegistrationModel
 
 
 # Create your views here.
 def scholarship_provider_index(request):
-    return render(request,"scholarshipproviders/provider-index.html")
-
+    scholarship_count = PostScholarshipModel.objects.count()
+    candidates_count =StudentsRegistrationModel.objects.count()
+    feedback_count = FeedbackModel.objects.count()
+    return render(request,"scholarshipproviders/provider-index.html",{"scholarship_count":scholarship_count,"candidates_count":candidates_count,"feedback_count":feedback_count})
 
 
 def scholarship_provider_registration(request):
@@ -21,12 +23,12 @@ def scholarship_provider_registration(request):
         board_university = request.POST['boarduniversity']
         pan_number = request.POST['pan']
         hod_institute = request.POST['hod']
+        firm_registration = request.FILES['firmregistration']
+        photo = request.FILES['image']
         phone_number = request.POST['phone']
         email = request.POST['email']
         password = request.POST['password']
-        firm_registration = request.FILES['firmregimage']
-        photo= request.FILES['image']
-        ProviderRegistrationModel.objects.create(institute_name=institute_name, board_university=board_university, pan_number=pan_number, hod_institute=hod_institute,phone_number=phone_number,email=email, password=password, firm_registration=firm_registration, photo=photo)
+        ProviderRegistrationModel.objects.create(institute_name=institute_name, board_university=board_university, firm_registration=firm_registration, photo=photo, pan_number=pan_number, hod_institute=hod_institute,phone_number=phone_number,email=email, password=password)
     return render(request,"scholarshipproviders/scholarship-provider-registration.html")
 
 
@@ -139,11 +141,6 @@ def provider_view_applied_candidates_details(request):
     return render(request,"scholarshipproviders/provider-view-applied-details.html")
 
 def provider_view_feedback(request):
-    FeedbackModeldisplay =FeedbackModel.objects.all()
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        feedback = request.POST.get('feedback')
-        FeedbackModel.objects.create(name=name, email=email, feedback=feedback)
-    return render(request,"scholarshipproviders/provider-view-feedback.html",{"FeedbackModel":FeedbackModeldisplay})
+    data = FeedbackModel.objects.all()
+    return render(request,"scholarshipproviders/provider-view-feedback.html",{"data":data})
 
